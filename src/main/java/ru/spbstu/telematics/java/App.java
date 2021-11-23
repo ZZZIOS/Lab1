@@ -8,7 +8,7 @@ public class App{
 		for(int i = 0; i < eqs; i++) {
 			for(int j = 0; j < vars + 1; j++)
 				System.out.print(arr[i][j] + " ");
+			System.out.println();
 		}
 	}
-}
-
+}	
