@@ -8,22 +8,26 @@ public class SystemOfEquations {
     int varsCounter;
     double[][] arr;
 
-    public SystemOfEquations(int vars, int equations, double[][] arr){
+   public SystemOfEquations(int vars, int equations, double[][] arr){
         varsCounter = vars;
         equationsCounter = equations;
         this.arr = arr;
     }
-
+    
     double[][] gauss() {
-        double divider;
+       double divider;
         double factor;
         int o = 0;
+
         for (int i = 0; i < min(varsCounter, equationsCounter); i++) {
+
             sort();
+
             divider = arr[i][i + o];
             if (divider == 0) {
-                if(i != varsCounter - 1)
-                    i--;
+                if (i + o == varsCounter - 1)
+                    break;
+                i--;
                 o++;
                 continue;
             }
@@ -36,8 +40,8 @@ public class SystemOfEquations {
 
             for (int k = 0; k < equationsCounter; k++) {
                 if (k != i) {
-                    double sign = arr[k][i];
-                    factor = abs(arr[k][i]);
+                    double sign = arr[k][i + o];
+                    factor = abs(arr[k][i + o]);
                     for (int h = 0; h < varsCounter + 1; h++) {
                         if (sign < 0)
                             arr[k][h] += factor * arr[i][h];
@@ -46,24 +50,9 @@ public class SystemOfEquations {
                     }
                 }
             }
-            
-          /*  /////////////////
-            
-            
-		for(int f = 0; f < equationsCounter; f++) {
-			for(int j = 0; j < varsCounter + 1; j++)
-				System.out.print(arr[f][j] + " ");
-			System.out.println();
-		}
-		
-		System.out.println();
-		System.out.println();*/
-	    /////////////////////////////////////////////
-		
             o = 0;
         }
-        
-         for (int j = 0; j < equationsCounter; j++) {
+                for (int j = 0; j < equationsCounter; j++) {
            for (int i = 0; i < varsCounter + 1; i++) {
                 if (arr[j][i] == -0.0)
                     arr[j][i] = 0.0;
