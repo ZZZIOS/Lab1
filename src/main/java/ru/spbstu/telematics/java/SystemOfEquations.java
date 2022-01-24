@@ -31,9 +31,6 @@ public class SystemOfEquations {
                 o++;
                 continue;
             }
-//            else {
-//                o = 0;
-//            }
             for (int j = 0; j < varsCounter + 1; j++) {
                 arr[i][j] /= divider;
             }
